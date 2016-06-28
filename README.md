@@ -11,6 +11,7 @@
 2. Click the Catalog tab and enter 'alchemy' in the search box.
 
  ![alt text](readme-images/readme-1.png "Search for AlchemyAPI")
+
 3. Click on the AlchemyAPI tile.
 
 4. Fill in the 'Add Service' details in the box on the right.
@@ -99,3 +100,38 @@ The sentiment API scores text for sentiment.  Full documentation of the API can 
   ```
 
 Full AlchemyAPI documentation can be found here: https://www.alchemyapi.com/api
+
+## Watson Natural Language Classifier API
+#### Logon To Bluemix
+1. Go to https://console.ng.bluemix.net and logon
+
+#### Create A New Watson Natural Language Classifier Service Instance
+1. Click the Catalog tab and enter 'natural language classifier' in the search box.
+
+ ![alt text](readme-images/readme-4.png "Search for Watson NLC")
+
+2. Click on the NAtural LAnguage Classifier tile.
+
+4. Fill in the 'Add Service' details in the box on the right.
+  * Space: dev
+  * App: Leave unbound
+  * Service name: {anything}
+  * Credential name: {anything}
+  * Selected Plan: Standard
+
+  ![alt text](readme-images/readme-5.png "Create Watson NLC Service Instance")
+
+5. Click 'create'.
+
+6. Select 'Service Credentials' in the left panel and note down your URL, username and password.
+
+#### Train Watson Natural Language Classifier
+The service instance you have just created is blank, it needs to be trained before it can be used.
+
+1. Select 'Manage' in the left panel and click the 'Access the beta toolkit' button in the main panel.  This will open a page with a button that says, 'Sign in with Bluemix', click the button to authenticate.
+
+  ![alt text](readme-images/readme-6.png "Access NLC beta toolkit")
+
+2. You will be asked to confirm that you want to give the toolkit access to your NLC Servcice Instance, hit 'confirm' and you'll be taken to the toolkit homepage.
+
+  ![alt text](readme-images/readme-67png "NLC beta toolkit homepage")
