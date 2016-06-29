@@ -10,7 +10,7 @@ This tutorial explains how developers can use some of these Watson services in t
 
 `/sample-nlc-training` - CSV file containing example training data for use with Watson Natural Language Classifier.
 
-`/sample-tweets` - text files content from a selection of Tweets captured during Wimbledon 2016, for use as test data
+`/sample-tweets` - text files content from a selection of Tweets captured during Wimbledon 2016, for use as test data.
 
 
 
@@ -185,24 +185,24 @@ The service instance you have just created is blank, it needs to be trained befo
 1. Open up your REST test client and do a GET request to: `https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/{your classifier ID here}/classify?text={your text here}`.  You will need to set basic authentication for the request using the username and password from when you first created a new Watson Natural Language Classifier service instance.
 2. The classifier will return a JSON document showing the classes that the text is assigned to and the confidence e.g.
 
-```json
-{
-  "classifier_id": "2374f9x69-nlc-8001",
-  "url": "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/2374f9x69-nlc-8001",
-  "text": "Will the rain delay the start of the Andy Murray match?",
-  "top_class": "wimbledon",
-  "classes": [
-    {
-      "class_name": "wimbledon",
-      "confidence": 0.9945938424245838
-    },
-    {
-      "class_name": "sport",
-      "confidence": 0.005406157575416182
-    }
-  ]
-}
-```
+  ```json
+  {
+    "classifier_id": "2374f9x69-nlc-8001",
+    "url": "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/2374f9x69-nlc-8001",
+    "text": "Will the rain delay the start of the Andy Murray match?",
+    "top_class": "wimbledon",
+    "classes": [
+      {
+        "class_name": "wimbledon",
+        "confidence": 0.9945938424245838
+      },
+      {
+        "class_name": "sport",
+        "confidence": 0.005406157575416182
+      }
+    ]
+  }
+  ```
 
 ## Sample Code
 The `sample-code/nodejs` directory contains some sample Javascript code to call the services you have created.
@@ -211,5 +211,7 @@ To run the sample code, you will need Node.js and NPM configured on your machine
 
 #### Setup
 1. Copy `config.js.template` to `config.js`.
-2. Edit the `config.js` file you created with your API details.
+2. Edit the `config.js` file you just created and add your API details.
 3. From the `sample-code/nodejs` directory run `npm install`.
+4. run `node alchemy-api.js` to call the Alchemy service.
+5. run `node watson-nlc-api.js` to call the Watson NLC service.

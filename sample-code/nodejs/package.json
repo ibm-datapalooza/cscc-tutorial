@@ -1,0 +1,15 @@
+{
+  "name": "cscc-tutorial",
+  "version": "1.0.0",
+  "description": "Tutorial for using Watson services from Wimbledon.",
+  "main": "api.js",
+  "scripts": {
+    "start": "node api",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "request": "2.72.*"
+  },
+  "author": "shawdm@uk.ibm.com",
+  "license": "MIT"
+}

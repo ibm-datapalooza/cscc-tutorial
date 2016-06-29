@@ -1,0 +1,8 @@
+var config = {
+  'ALCHEMY_API_KEY': '',
+  'WATSON_NLC_CLASSIFIER_ID': '',
+  'WATSON_NLC_CLASSIFIER_USER': '',
+  'WATSON_NLC_CLASSIFIER_PASSWORD': ''
+}
+
+module.exports = config;
