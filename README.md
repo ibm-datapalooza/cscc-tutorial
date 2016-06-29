@@ -1,3 +1,19 @@
+# Cognitive Social Command Centre Tutorial
+ ![alt text](readme-images/ccc-topics.png "IBM and Wimbledon's Cognitive Social Command Centre")
+
+The Cognitive Social Command Centre (CSCC) was built for Wimbledon 2016.  The application helps Wimbledon's editorial team understand and react to tournament related social media content.  The CSCC was built on IBM Bluemix making use of the Watson services to analyse text content in Twitter, Facebook, YouTube and Instagram messages.
+
+This tutorial explains how developers can use some of these Watson services in their own development work.
+
+## Contents
+`/sample-code` - Sample Javascript code showing how the Alchemy and Watson APIs can be called programatically.
+
+`/sample-nlc-training` - CSV file containing example training data for use with Watson Natural Language Classifier.
+
+`/sample-tweets` - text files content from a selection of Tweets captured during Wimbledon 2016, for use as test data
+
+
+
 ## Prereqs
 1. A Bluemix account, go to https://console.ng.bluemix.net to create a free one if you don't have one.
 
@@ -84,7 +100,7 @@ The sentiment API scores text for sentiment.  Full documentation of the API can 
 
 1. Open up your REST test client and do a GET request to: `http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey={your API key here}&outputMode=json&text={your text here}`.
 
-2. The API will return a sentiment a (JSON formatted) assessment for the whole document in terms of a type (positive, negative, neutral) and a more specific score (-1 to +1). Sending the text 'Andy Murray and Liam Broady make their way off court to a standing ovation... #Wimbledon' returns the JSON:
+2. The API will return a sentiment (JSON formatted) assessment for the whole document in terms of a type (positive, negative, neutral) and a more specific score (-1 to +1). Sending the text 'Andy Murray and Liam Broady make their way off court to a standing ovation... #Wimbledon' returns the JSON:
 
   ```json
   {
@@ -132,6 +148,68 @@ The service instance you have just created is blank, it needs to be trained befo
 
   ![alt text](readme-images/readme-6.png "Access NLC beta toolkit")
 
-2. You will be asked to confirm that you want to give the toolkit access to your NLC Servcice Instance, hit 'confirm' and you'll be taken to the toolkit homepage.
+2. You will be asked to confirm that you want to give the toolkit access to your NLC Servcice Instance, hit 'confirm' and you'll be taken to the toolkit homepage. Click on the 'Add training data' link to start the process of training the classifier.
 
-  ![alt text](readme-images/readme-67png "NLC beta toolkit homepage")
+  ![alt text](readme-images/readme-7.png "NLC beta toolkit homepage")
+
+3. The training data page will load, click the 'Upload training data' icon in the top right corner and select a CSV file with training data in.  There is some sample training data in `sample-nlc-training/sample-classes.csv`.  Training data is in the form of example text and a comma separated list of classes that the example should be classified in to.  In the sample, tweets are classified into either 'wimbledon' or 'sport'.   
+
+  ![alt text](readme-images/readme-8.png "NLC beta toolkit homepage")
+
+  Once the training data has been uploaded you'll be able to review the example texts and classes you are adding.
+
+  ![alt text](readme-images/readme-9.png "NLC beta toolkit homepage")
+
+  If you are happy with the training data, click 'Create classifer' to begin training the classifier.
+
+4. You'll be asked to enter a name for the classifer and the language of the text you are training it for.  
+
+    ![alt text](readme-images/readme-10.png "NLC beta toolkit homepage")
+
+    Click 'create' to start the training process.  Training a classifier can take a long time, from minutes to hours, depending on the load on the server and the size of your training data.  The process will run in the background, so you don't need to stay on the page.  Hit the browser refresh button and you'll see an update of the training status.
+
+    ![alt text](readme-images/readme-11.png "NLC beta toolkit homepage")
+
+    When the training has finished the classifier status will update to 'Available' and you'll see an ID for the classifier.  Make a note of the classifier ID.
+
+    ![alt text](readme-images/readme-12.png "NLC beta toolkit homepage")
+
+    The newly created classifier can be tested from within the toolkit, click the right arrow icon at the bottom right corner, the 'Improve performance' page will open.
+
+      ![alt text](readme-images/readme-13.png "NLC beta toolkit homepage")
+
+    This page allows you to enter text and see the classes (and the confidence) that the classifier assigns to the text.
+
+
+#### Calling the Natural Language Classifier API
+1. Open up your REST test client and do a GET request to: `https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/{your classifier ID here}/classify?text={your text here}`.  You will need to set basic authentication for the request using the username and password from when you first created a new Watson Natural Language Classifier service instance.
+2. The classifier will return a JSON document showing the classes that the text is assigned to and the confidence e.g.
+
+```json
+{
+  "classifier_id": "2374f9x69-nlc-8001",
+  "url": "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/2374f9x69-nlc-8001",
+  "text": "Will the rain delay the start of the Andy Murray match?",
+  "top_class": "wimbledon",
+  "classes": [
+    {
+      "class_name": "wimbledon",
+      "confidence": 0.9945938424245838
+    },
+    {
+      "class_name": "sport",
+      "confidence": 0.005406157575416182
+    }
+  ]
+}
+```
+
+## Sample Code
+The `sample-code/nodejs` directory contains some sample Javascript code to call the services you have created.
+
+To run the sample code, you will need Node.js and NPM configured on your machine. There's a Vagrant file included to create a new development virtual machine preconfigured with Node.
+
+#### Setup
+1. Copy `config.js.template` to `config.js`.
+2. Edit the `config.js` file you created with your API details.
+3. From the `sample-code/nodejs` directory run `npm install`.
