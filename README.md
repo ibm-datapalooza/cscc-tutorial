@@ -1,7 +1,7 @@
 # Cognitive Social Command Centre Tutorial
  ![alt text](readme-images/ccc-topics.png "IBM and Wimbledon's Cognitive Social Command Centre")
 
-The Cognitive Social Command Centre (CSCC) was built for Wimbledon 2016.  The application helps Wimbledon's editorial team understand and react to tournament related social media content.  The CSCC was built on IBM Bluemix making use of the Watson services to analyse text content in Twitter, Facebook, YouTube and Instagram messages.
+The Cognitive Social Command Centre (CSCC) was created for Wimbledon 2016. The application helps Wimbledon's editorial team understand and react to tournament related social media content. The CSCC was built on IBM Bluemix, making use of the Watson services to analyse text content on Twitter, Facebook, YouTube and Instagram.
 
 This tutorial explains how developers can use some of these Watson services in their own development work.
 
@@ -10,14 +10,14 @@ This tutorial explains how developers can use some of these Watson services in t
 
 `/sample-nlc-training` - CSV file containing example training data for use with Watson Natural Language Classifier.
 
-`/sample-tweets` - text files content from a selection of Tweets captured during Wimbledon 2016, for use as test data.
+`/sample-tweets` - text content from a selection of Tweets captured during Wimbledon 2016, for use as test data.
 
 
 
 ## Prereqs
-1. A Bluemix account, go to https://console.ng.bluemix.net to create a free one if you don't have one.
+1. A Bluemix account, go to https://console.ng.bluemix.net to create a free one.
 
-2. A REST test client. curl will be fine, I use https://www.getpostman.com but there are also browser based ones like https://www.hurl.it.
+2. A REST test client. Curl will be fine, I use https://www.getpostman.com but there are also browser based ones like https://www.hurl.it.
 
 ## Alchemy Language APIs
 #### Logon To Bluemix
@@ -45,15 +45,15 @@ This tutorial explains how developers can use some of these Watson services in t
 #### Test the API
 1. The free plan limits you to 1000 requests/day. There is an API call to see how many requests you've made (which doesn't count towards your limit), and tests that your API key has been successfully created.
 
-2. Open up your REST test client (e.g. Postman) and do a GET request to `http://access.alchemyapi.com/calls/info/GetAPIKeyInfo?apikey= {your API key here}&outputMode=json` if your API key has been successfuly created you'll receive a JSON response with the number of requests made today and your daily limit.
+2. Open up your REST test client (e.g. Postman) and do a GET request to `http://access.alchemyapi.com/calls/info/GetAPIKeyInfo?apikey={your API key here}&outputMode=json`. If your API key has been successfully created you'll receive a JSON response with the number of requests made today and your daily limit.
 ![alt text](readme-images/readme-3.png "AlchemyAPI Key Info")
 
 #### Calling the Entity Extraction API
-The entity extraction API finds entities (people, places, organisations etc.) within text.  Full documentation of the API can be found here: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language/api/v1/#entities
+The entity extraction API finds entities (people, places, organisations etc.) within text. Full documentation of the API can be found here: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language/api/v1/#entities
 
 1. Open up your REST test client and do a GET request to: `http://gateway-a.watsonplatform.net/calls/text/TextGetRankedNamedEntities?apikey={your API key here}&outputMode=json&text={your text here}`.
 
-2. The API should return a list of entities found within the text formatted in JSON format.  Sending the text 'Andy Murray and Liam Broady make their way off court to a standing ovation... #Wimbledon' returns the JSON:
+2. The API will return a list of entities found. For example, sending the text 'Andy Murray and Liam Broady make their way off court to a standing ovation... #Wimbledon' returns the JSON:
 
   ```json
   {
@@ -96,11 +96,11 @@ The entity extraction API finds entities (people, places, organisations etc.) wi
 
 
 #### Calling The Sentiment API
-The sentiment API scores text for sentiment.  Full documentation of the API can be found here: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language/api/v1/#sentiment
+The sentiment API scores text for sentiment. Full documentation of the API can be found here: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language/api/v1/#sentiment
 
-1. Open up your REST test client and do a GET request to: `http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey={your API key here}&outputMode=json&text={your text here}`.
+1. Open your REST test client and do a GET request to: `http://gateway-a.watsonplatform.net/calls/text/TextGetTextSentiment?apikey={your API key here}&outputMode=json&text={your text here}`.
 
-2. The API will return a sentiment (JSON formatted) assessment for the whole document in terms of a type (positive, negative, neutral) and a more specific score (-1 to +1). Sending the text 'Andy Murray and Liam Broady make their way off court to a standing ovation... #Wimbledon' returns the JSON:
+2. The API will return a sentiment assessment for the whole document in terms of a type (positive, negative, neutral) and a more specific score (-1 to +1). For example, sending the text 'Andy Murray and Liam Broady make their way off court to a standing ovation... #Wimbledon' returns the JSON:
 
   ```json
   {
@@ -115,18 +115,16 @@ The sentiment API scores text for sentiment.  Full documentation of the API can 
   }
   ```
 
-Full AlchemyAPI documentation can be found here: https://www.alchemyapi.com/api
-
 ## Watson Natural Language Classifier API
 #### Logon To Bluemix
 1. Go to https://console.ng.bluemix.net and logon
 
 #### Create A New Watson Natural Language Classifier Service Instance
-1. Click the Catalog tab and enter 'natural language classifier' in the search box.
+1. Click the Catalog tab and enter 'natural language classifier' in to the search box.
 
  ![alt text](readme-images/readme-4.png "Search for Watson NLC")
 
-2. Click on the NAtural LAnguage Classifier tile.
+2. Click on the 'Natural Language Classifier' tile.
 
 4. Fill in the 'Add Service' details in the box on the right.
   * Space: dev
@@ -139,7 +137,7 @@ Full AlchemyAPI documentation can be found here: https://www.alchemyapi.com/api
 
 5. Click 'create'.
 
-6. Select 'Service Credentials' in the left panel and note down your URL, username and password.
+6. Select 'Service Credentials' in the left panel and note down your username and password.
 
 #### Train Watson Natural Language Classifier
 The service instance you have just created is blank, it needs to be trained before it can be used.
@@ -148,11 +146,11 @@ The service instance you have just created is blank, it needs to be trained befo
 
   ![alt text](readme-images/readme-6.png "Access NLC beta toolkit")
 
-2. You will be asked to confirm that you want to give the toolkit access to your NLC Servcice Instance, hit 'confirm' and you'll be taken to the toolkit homepage. Click on the 'Add training data' link to start the process of training the classifier.
+2. You will be asked to confirm that you want to give the toolkit access to your NLC service instance, hit 'confirm' and you'll be taken to the toolkit homepage. Click on the 'Add training data' link to start the process of training the classifier.
 
   ![alt text](readme-images/readme-7.png "NLC beta toolkit homepage")
 
-3. The training data page will load, click the 'Upload training data' icon in the top right corner and select a CSV file with training data in.  There is some sample training data in `sample-nlc-training/sample-classes.csv`.  Training data is in the form of example text and a comma separated list of classes that the example should be classified in to.  In the sample, tweets are classified into either 'wimbledon' or 'sport'.   
+3. The training data page will load, click the 'Upload training data' icon in the top right corner and select a CSV file with training data in. There is some sample training data in `sample-nlc-training/sample-classes.csv`. Training data is in the form of example text and a comma separated list of classes that the example should be classified to. In the sample, tweets are classified into either 'wimbledon' or 'sport'.   
 
   ![alt text](readme-images/readme-8.png "NLC beta toolkit homepage")
 
@@ -160,29 +158,29 @@ The service instance you have just created is blank, it needs to be trained befo
 
   ![alt text](readme-images/readme-9.png "NLC beta toolkit homepage")
 
-  If you are happy with the training data, click 'Create classifer' to begin training the classifier.
+  If you are happy with the training data, click 'Create classifier' to begin training the classifier.
 
-4. You'll be asked to enter a name for the classifer and the language of the text you are training it for.  
+4. You'll be asked to enter a name for the classifier and the language of the text you are training it for.  
 
     ![alt text](readme-images/readme-10.png "NLC beta toolkit homepage")
 
-    Click 'create' to start the training process.  Training a classifier can take a long time, from minutes to hours, depending on the load on the server and the size of your training data.  The process will run in the background, so you don't need to stay on the page.  Hit the browser refresh button and you'll see an update of the training status.
+    Click 'create' to start the training process.  Training a classifier can take a long time, from minutes to hours, depending on the load on the server and the size of your training data. The process will run in the background, so you don't need to stay on the page. Hit the browser refresh button and you'll see an update of the training status.
 
     ![alt text](readme-images/readme-11.png "NLC beta toolkit homepage")
 
-    When the training has finished the classifier status will update to 'Available' and you'll see an ID for the classifier.  Make a note of the classifier ID.
+    When the training has finished the classifier status will change to 'Available' and you'll see an ID for the classifier.  Make a note of the classifier ID.
 
     ![alt text](readme-images/readme-12.png "NLC beta toolkit homepage")
 
-    The newly created classifier can be tested from within the toolkit, click the right arrow icon at the bottom right corner, the 'Improve performance' page will open.
+    The newly created classifier can be tested from within the toolkit, click the arrow icon in the bottom right corner, the 'Improve performance' page will open.
 
-      ![alt text](readme-images/readme-13.png "NLC beta toolkit homepage")
+    ![alt text](readme-images/readme-13.png "NLC beta toolkit homepage")
 
     This page allows you to enter text and see the classes (and the confidence) that the classifier assigns to the text.
 
 
 #### Calling the Natural Language Classifier API
-1. Open up your REST test client and do a GET request to: `https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/{your classifier ID here}/classify?text={your text here}`.  You will need to set basic authentication for the request using the username and password from when you first created a new Watson Natural Language Classifier service instance.
+1. Open up your REST test client and do a GET request to: `https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/{your classifier ID here}/classify?text={your text here}`.  You will need to set basic authentication for the request using the username and password from when you first created a new Watson Natural Language Classifier instance.
 2. The classifier will return a JSON document showing the classes that the text is assigned to and the confidence e.g.
 
   ```json
@@ -205,9 +203,9 @@ The service instance you have just created is blank, it needs to be trained befo
   ```
 
 ## Sample Code
-The `sample-code/nodejs` directory contains some sample Javascript code to call the services you have created.
+The `sample-code/nodejs` directory contains sample Javascript code to call the services you have created.
 
-To run the sample code, you will need Node.js and NPM configured on your machine. There's a Vagrant file included to create a new development virtual machine preconfigured with Node.
+To run the sample code, you will need Node.js and NPM configured on your machine. There's a Vagrant file included to create a new development virtual machine, preconfigured with Node.
 
 #### Setup
 1. Copy `config.js.template` to `config.js`.
