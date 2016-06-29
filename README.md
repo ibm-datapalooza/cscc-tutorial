@@ -202,6 +202,8 @@ The service instance you have just created is blank, it needs to be trained befo
   }
   ```
 
+Full documentation for Watson Natural Language Classifier can be found at: https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/nl-classifier.html
+
 ## Sample Code
 The `sample-code/nodejs` directory contains sample Javascript code to call the services you have created.
 
