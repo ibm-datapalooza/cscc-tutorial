@@ -150,31 +150,31 @@ The service instance you have just created is blank, it needs to be trained befo
 
   ![alt text](readme-images/readme-7.png "NLC beta toolkit homepage")
 
-3. The training data page will load, click the 'Upload training data' icon in the top right corner and select a CSV file with training data in. There is some sample training data in `sample-nlc-training/sample-classes.csv`. Training data is in the form of example text and a comma separated list of classes that the example should be classified to. In the sample, tweets are classified into either 'wimbledon' or 'sport'.   
+3. The training data page will load, click the 'Upload training data' icon in the top right corner and select a CSV file with training data in. There is some sample training data in `sample-nlc-training/sample-classes.csv`. Training data is in the form of example text and a comma separated list of classes that the example should be classified to. In the sample, tweets are classified into either 'wimbledon' or 'sport'.
 
-  ![alt text](readme-images/readme-8.png "NLC beta toolkit homepage")
+  ![alt text](readme-images/readme-8.png "NLC upload training data")
 
   Once the training data has been uploaded you'll be able to review the example texts and classes you are adding.
 
-  ![alt text](readme-images/readme-9.png "NLC beta toolkit homepage")
+  ![alt text](readme-images/readme-9.png "NLC review training data")
 
   If you are happy with the training data, click 'Create classifier' to begin training the classifier.
 
 4. You'll be asked to enter a name for the classifier and the language of the text you are training it for.  
 
-    ![alt text](readme-images/readme-10.png "NLC beta toolkit homepage")
+    ![alt text](readme-images/readme-10.png "NLC create classifier")
 
     Click 'create' to start the training process.  Training a classifier can take a long time, from minutes to hours, depending on the load on the server and the size of your training data. The process will run in the background, so you don't need to stay on the page. Hit the browser refresh button and you'll see an update of the training status.
 
-    ![alt text](readme-images/readme-11.png "NLC beta toolkit homepage")
+    ![alt text](readme-images/readme-11.png "NLC classifier creation in progress")
 
     When the training has finished the classifier status will change to 'Available' and you'll see an ID for the classifier.  Make a note of the classifier ID.
 
-    ![alt text](readme-images/readme-12.png "NLC beta toolkit homepage")
+    ![alt text](readme-images/readme-12.png "NLC classifier complete")
 
     The newly created classifier can be tested from within the toolkit, click the arrow icon in the bottom right corner, the 'Improve performance' page will open.
 
-    ![alt text](readme-images/readme-13.png "NLC beta toolkit homepage")
+    ![alt text](readme-images/readme-13.png "NLC classifier test")
 
     This page allows you to enter text and see the classes (and the confidence) that the classifier assigns to the text.
 
